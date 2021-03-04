@@ -88,8 +88,8 @@ map은 여기서 뭐가 돌아오든 array로 돌려주기 때문이다.
 prop에다가 유니크한 key를 입력하기 위해서 id를 추가해준다
 */
 
-
-class App extends React.Component{
+// TODO: state
+/*class App extends React.Component{
   state = {
     count: 0
   };
@@ -101,9 +101,25 @@ class App extends React.Component{
     this.setState(current => ({count: current.count - 1}))};
   //setState를 호출하면 react는 state를 refresh하고 render function을 호출한다.
   //setState를 호출할 때마다 react는 render할 것이다.
-    
+
+  componentDidMount(){
+    console.log("component rendered");
+  }
+  //componentDidMount = 이 component는 처음 render됐다라고 기본적으로 알려준다.
+
+  componentDidUpdate(){
+    console.log("I just updated");
+  }
+  //componont가 업데이트를 했다는 증거. 무언가를 클릭하거나 사용을 할때 업데이트가 된다는 것을 알려준다.
+
+  componentWillUnmount(){
+    console.log("Good bye hello World");
+  }
+  //component가 떠날때, 페이지가 바뀌거나 그럴때를 알려준다.
+
 
   render() {
+    console.log("I'm rendering");
     return (
     <div>
       <h1>The number is {this.state.count}</h1>
@@ -116,7 +132,7 @@ class App extends React.Component{
 //class는 return이 아닌 render method를 가지고 잇음
 //react는 자동적으로 너의 class component의 render method를 자동으로 실행한다.
 //class component = state => object
-//App에서 data를 어떻게 바꾸어주나? state 가 class component에 있다. class이기 때문에 this.state.count로 정해준다
-  
+//App에서 data를 어떻게 바꾸어주나? state 가 class component에 있다. class이기 때문에 this.state.count로 정해준다*/
+
 
 export default App;
