@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from "prop-types"
 
-const foodILike = [
+// TODO: props
+/*const foodILike = [
   {
     id:1,
     name: "Kimchi",
@@ -18,7 +19,8 @@ const foodILike = [
   }
 ] //object list
 
-/*function renderFood(dish){
+
+function renderFood(dish){
   return <Food name={dish.name} picture={dish.image} />
 }
 
@@ -29,7 +31,7 @@ function App() {
     {console.log(foodILike.map(renderFood))}
     {foodILike.map(renderFood)}
   </div>
-*/
+
 function Food({name, picture, rating}) { 
   //react magic
   //props object 내부에는 fav가 있다. 내부에서 얻는 방법 props.fav
@@ -54,6 +56,8 @@ Food.propTypes = {
 //propTypes는 console에서 어떠한 오류가 범해져 있는지를 파악하는 방법이다.
 //이거는 무조건 propTypes로 설정을 해줘야 한다.
 
+
+
 function App() {
   return (
     
@@ -71,19 +75,46 @@ function App() {
 }
 
   
-  /*<h1>Hello World!!</h1>
-  HTML <div class="hello">비슷하다.
-  food component에 fav라는 이름의 property를 kimchi라는 value로 prop name을 줬다.
-  props라는 개념을 잘 기억하자
-  */
+<h1>Hello World!!</h1>
+HTML <div class="hello">비슷하다.
+food component에 fav라는 이름의 property를 kimchi라는 value로 prop name을 줬다.
+props라는 개념을 잘 기억하자
 
-  /*
-  {foodILike.map(dish => <Food name={dish.name} picture={dish.image} />)}
-  map.function 이라는 개념. map.function을 통해서 object 리스트들을 보여지게 할 수 있다.
-  map은 여기서 뭐가 돌아오든 array로 돌려주기 때문이다.
-  prop에다가 유니크한 key를 입력하기 위해서 id를 추가해준다
-  */
 
+
+{foodILike.map(dish => <Food name={dish.name} picture={dish.image} />)}
+map.function 이라는 개념. map.function을 통해서 object 리스트들을 보여지게 할 수 있다.
+map은 여기서 뭐가 돌아오든 array로 돌려주기 때문이다.
+prop에다가 유니크한 key를 입력하기 위해서 id를 추가해준다
+*/
+
+
+class App extends React.Component{
+  state = {
+    count: 0
+  };
+  add = () => {
+    console.log("add");
+  };
+  minus = () => {
+    console.log("minus");
+  };
+    
+
+  render() {
+    return (
+    <div>
+      <h1>The number is {this.state.count}</h1>
+      <button onClick={this.add}>Add</button>
+      <button onClick={this.minus}>Minus</button>
+    </div>
+    );
+  }
+}
+//class는 return이 아닌 render method를 가지고 잇음
+//react는 자동적으로 너의 class component의 render method를 자동으로 실행한다.
+//class component = state => object
+//App에서 data를 어떻게 바꾸어주나? state 가 class component에 있다. class이기 때문에 this.state.count로 정해준다
   
 
 export default App;
