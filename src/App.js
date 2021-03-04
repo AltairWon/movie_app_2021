@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types"
 import axios from "axios";
+import Movie from "./Movie";
 
 // TODO: props
 /*const foodILike = [
@@ -143,9 +144,10 @@ class App extends React.Component {
     movies: []
   };
   getMovies = async () => {
-    const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+    const {data: { data : {movies}}} = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
     //axios = fetch위에 있는 작은 layer
-    //await는 기다린다 axios를 기다린다고 생각하면 된다. 
+    //await는 기다린다 axios를 기다린다고 생각하면 된다.
+    this.setState({movies, isLoading: false});
   };
   componentDidMount(){
     this.getMovies();
@@ -153,8 +155,10 @@ class App extends React.Component {
   //data를 fetch했다
 
   render() {
-    const { isLoading } = this.state;
-    return <div>{isLoading ? "Loading..." : "We are ready"}</div>;
+    const { isLoading, movies } = this.state;
+    return <div>{isLoading ? "Loading..." : movies.map(movie => (
+      <Movie key={movie.id} id={movie.id} year={movie.year} title={movie.title} summary={movie.summary} poster={movie.medium_cover_image} />
+    ))}</div>;
   }
 }
 
