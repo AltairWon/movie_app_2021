@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types"
+import axios from "axios";
 
 // TODO: props
 /*const foodILike = [
@@ -141,10 +142,13 @@ class App extends React.Component {
     isLoading: true,
     movies: []
   };
+  getMovies = async () => {
+    const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+    //axios = fetch위에 있는 작은 layer
+    //await는 기다린다 axios를 기다린다고 생각하면 된다. 
+  };
   componentDidMount(){
-    setTimeout(() => {
-      this.setState({isLoading: false});
-    }, 6000);
+    this.getMovies();
   }
   //data를 fetch했다
 
