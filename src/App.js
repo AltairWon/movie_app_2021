@@ -132,7 +132,27 @@ prop에다가 유니크한 key를 입력하기 위해서 id를 추가해준다
 //class는 return이 아닌 render method를 가지고 잇음
 //react는 자동적으로 너의 class component의 render method를 자동으로 실행한다.
 //class component = state => object
-//App에서 data를 어떻게 바꾸어주나? state 가 class component에 있다. class이기 때문에 this.state.count로 정해준다*/
+//App에서 data를 어떻게 바꾸어주나? state 가 class component에 있다. class이기 때문에 this.state.count로 정해준다
+//mount는 생셔나는 것, 태어나는 것, 살아 있는것
+*/
+
+class App extends React.Component {
+  state = {
+    isLoading: true,
+    movies: []
+  };
+  componentDidMount(){
+    setTimeout(() => {
+      this.setState({isLoading: false});
+    }, 6000);
+  }
+  //data를 fetch했다
+
+  render() {
+    const { isLoading } = this.state;
+    return <div>{isLoading ? "Loading..." : "We are ready"}</div>;
+  }
+}
 
 
 export default App;
