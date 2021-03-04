@@ -94,11 +94,13 @@ class App extends React.Component{
     count: 0
   };
   add = () => {
-    console.log("add");
-  };
+    //this.setState({count: this.state.count + 1});
+    this.setState(current => ({count: current.count + 1}))};
   minus = () => {
-    console.log("minus");
-  };
+    //this.setState({count: this.state.count -1});
+    this.setState(current => ({count: current.count - 1}))};
+  //setState를 호출하면 react는 state를 refresh하고 render function을 호출한다.
+  //setState를 호출할 때마다 react는 render할 것이다.
     
 
   render() {
